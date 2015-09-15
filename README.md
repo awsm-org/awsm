@@ -3,7 +3,7 @@
 AWSM: Amazon Web Services Modules
 =================================
 
-**aws-modules** contain one or multiple AWS Lambda functions,
+**Amazon Web Services Modules (aws-modules)** contain one or multiple AWS Lambda functions,
 plus their AWS resource dependencies defined via AWS CloudFormation.
 
 The purpose of aws-modules is to encourage the development of lambda functions
