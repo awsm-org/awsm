@@ -62,6 +62,7 @@ AWS resources outside of the Lambda and API Gateway resources your module requir
 		"Resources": { }
 	}
 }
+```
 
 Within each resource/action directory is another **awsm.json** which describes either an AWS Lambda configuration,
 an API Gateway configuration, or both.
