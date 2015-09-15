@@ -1,6 +1,6 @@
 ![AWSM logo aws modules lambda api gateway JAWS](amazon_web_services_modules_awsm.png)
 
-AWSM: The AWS-Module System
+AWSM: Amazon Web Services Modules
 =================================
 
 **aws-modules** contain one or multiple AWS Lambda functions,
