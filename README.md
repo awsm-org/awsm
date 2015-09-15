@@ -25,7 +25,7 @@ lambdas // The modules lambda function(s)
 This is the directory structure of an aws-module with multiple lambda functions:
 
 ```
-awsm.json // Contains a "resources" property for the other resources required by this module
+awsm.json // Contains a "resources" property for the other resources required by module
 lambdas // The modules lambda function(s)
   users // Resource level directory (Required)
     create // Action level directory (Required)
@@ -42,4 +42,60 @@ lambdas // The modules lambda function(s)
       index.js Lambda code. Can be in any language AWS Lambda supports
 lib // Contains code shared across all lambda functions
  	users-dynamodb.js // Shared code
+```
+
+## Configuration
+
+aws-modules' configuration settings and dependencies are described in **awsm.json** files located in the module.
+
+At the module's root, you should have an **awsm.json** file which describes publishing information as well as
+AWS resources outside of the Lambda and API Gateway resources your module requires in the "resources" object:
+
+```
+"name": "usersCreate",
+"description": "Creates a user",
+"version": "0.0.1",
+"location": "github.com/you/your_aws_modules_repo",
+"resources": {
+	"cloudFormation": {
+		"PolicyDocuments": [ ],
+		"Resources": { }
+	}
+}
+
+Within each resource/action directory is another **awsm.json** which describes either an AWS Lambda configuration,
+an API Gateway configuration, or both.
+
+```
+"lambda": {
+	"cloudFormation": {
+		"Description": "",
+    "Handler": "",
+    "MemorySize": 1024,
+    "Runtime": "nodejs",
+    "Timeout": 6
+	}
+},
+"apiGateway": {
+	"cloudFormation": {
+		"Type": "AWS",
+    "Path": "users/create",
+    "Method": "POST",
+    "AuthorizationType": "none",
+    "ApiKeyRequired": false,
+    "RequestTemplates": {},
+    "RequestParameters": {},
+    "Responses": {
+    	"default": {
+      	"statusCode": "200",
+      	"responseParameters": {},
+      	"responseTemplates": {
+      	"application/json": ""
+      }
+    },
+    "400": {
+    	"statusCode": "400"
+    }
+  }
+}
 ```
