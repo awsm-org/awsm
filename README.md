@@ -9,6 +9,8 @@ plus their AWS resource dependencies defined via AWS CloudFormation.
 The purpose of aws-modules is to encourage the development of lambda functions
 designed for re-use and easy installation into applications.
 
+The specifications for aws-modules are below.
+
 ## Structure
 
 This is the directory structure of an aws-module with 1 lambda function:
