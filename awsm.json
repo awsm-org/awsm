@@ -16,17 +16,17 @@
   },
   "apiGateway": {
     "cloudFormation": {
-      "Type": "AWS"
+      "Type": "AWS",
       "Path": "resource/action",
       "Method": "POST",
       "AuthorizationType": "none",
       "ApiKeyRequired": false,
       "RequestTemplates": {
         "application/json": "{\"access_token\":\"$input.params('access_token')\",\"body\":\"$input.json('$')\"}"
-      }
+      },
       "RequestParameters": {
         "integration.request.querystring.integrationQueryParam": "method.request.querystring.access_token"
-      }
+      },
       "CacheNamespace": "String",
       "CacheKeyParameters": [],
       "Responses": {
@@ -41,7 +41,7 @@
         }
       }
     }
-  }
+  },
   "resources": {
     "cloudFormation": {
       "PolicyDocuments": [],
