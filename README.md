@@ -14,33 +14,33 @@ designed for re-use and easy installation into applications.
 This is the directory structure of an aws-module with 1 lambda function:
 
 ```
-awsm.json // Contains a "resources" property for the other resources required by this module
-lambdas // The modules lambda function(s)
-  users // Resource level directory (Required)
-    create // Action level directory (Required)
+awsm.json 			// Contains a "resources" property for the other resources required by this module
+lambdas 				// The modules lambda function(s)
+  users 				// Resource level directory (Required)
+    create 			// Action level directory (Required)
       awsm.json // Contains a "lambda" property and a "endpoint" property for this lambda
-      index.js // Lambda code. Can be in any language AWS Lambda supports
+      index.js 	// Lambda code. Can be in any language AWS Lambda supports
 ```
 
 This is the directory structure of an aws-module with multiple lambda functions:
 
 ```
-awsm.json // Contains a "resources" property for the other resources required by module
-lambdas // The modules lambda function(s)
-  users // Resource level directory (Required)
-    create // Action level directory (Required)
-      awsm.json // Contains a "lambda" property and a "endpoint" property
-      index.js // Lambda code. Can be in any language AWS Lambda supports
-    show // Action level directory (Required)
-      awsm.json // Contains a "lambda" property and a "endpoint" property
-      index.js // Lambda code. Can be in any language AWS Lambda supports
-    update // Action level directory (Required)
-      awsm.json // Contains a "lambda" property and a "endpoint" property
+awsm.json 					// Contains a "resources" property for the other resources required by module
+lambdas 						// The modules lambda function(s)
+  users 						// Resource level directory (Required)
+    create 					// Action level directory (Required)
+      awsm.json 		// Contains a "lambda" property and a "endpoint" property
+      index.js 			// Lambda code. Can be in any language AWS Lambda supports
+    show 						// Action level directory (Required)
+      awsm.json 		// Contains a "lambda" property and a "endpoint" property
+      index.js 			// Lambda code. Can be in any language AWS Lambda supports
+    update 					// Action level directory (Required)
+      awsm.json 		// Contains a "lambda" property and a "endpoint" property
       index.js Lambda code. Can be in any language AWS Lambda supports
-    delete // Action level directory (Required)
-      awsm.json // Contains a "lambda" property and a "endpoint" property
+    delete 					// Action level directory (Required)
+      awsm.json 		// Contains a "lambda" property and a "endpoint" property
       index.js Lambda code. Can be in any language AWS Lambda supports
-lib // Contains code shared across all lambda functions
+lib 								// Contains code shared across all lambda functions
  	users-dynamodb.js // Shared code
 ```
 
