@@ -1,0 +1,13 @@
+*.seed
+*.log
+*.csv
+*.dat
+*.out
+*.pid
+*.gz
+*.idea
+*.env
+
+**/.idea
+.DS_Store
+.tmp
