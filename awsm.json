@@ -1,11 +1,33 @@
+/**
+*
+* awsm.json
+*
+* - This file shows all properties available to awsm.json files and the value types they expect
+*
+*/
+
 {
   "name": "moduleName",
   "description": "A description of your aws-module",
   "version": "0.0.1",
   "location": "github url to your module's repo",
   "lambda": {
-    "envVars": [],
-    "package": {},
+    "envVars": ["string"],
+    "package": {
+      "optimize": {
+        "builder": "browserify",
+        "minify": true,
+        "ignore": [],
+        "exclude": [
+          "aws-sdk"
+        ],
+        "includePaths": []
+      }
+    },
+    "excludePatterns": [
+      "lambdas/[u].*",
+      "lambdas/bundle/b.*"
+    ],
     "cloudFormation": {
       "Description": "lambda function description",
       "Handler": "resource/action/index.handler",
