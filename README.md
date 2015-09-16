@@ -1,4 +1,4 @@
-![AWSM logo aws modules lambda api gateway JAWS](amazon_web_services_modules_awsm.png)
+![AWSM logo aws modules lambda api gateway JAWS](awsm_logo.png)
 
 AWSM: Amazon Web Services Modules
 =================================
