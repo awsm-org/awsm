@@ -15,7 +15,7 @@ This is the directory structure of an aws-module with 1 lambda function:
 
 ```
 awsm.json 		// Contains a "resources" property for the other resources required by this module
-lambdas 		// The modules lambda function(s)
+aws_modules 		// The modules lambda function(s)
   users 		// Resource level directory (Required)
     create 		// Action level directory (Required)
       awsm.json 	// Contains a "lambda" property and a "endpoint" property for this lambda
@@ -26,7 +26,7 @@ This is the directory structure of an aws-module with multiple lambda functions:
 
 ```
 awsm.json 			// Contains a "resources" property for the other resources required by module
-lambdas 			// The modules lambda function(s)
+aws_modules 			// The modules lambda function(s)
   users 			// Resource level directory (Required)
     create 			// Action level directory (Required)
       awsm.json 		// Contains a "lambda" property and a "endpoint" property
