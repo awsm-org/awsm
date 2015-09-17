@@ -33,21 +33,21 @@ create 				// Action/lambda level directory (Required)
 	handler.js 		// Lambda function handler (JS example. Can be in any language AWS Lambda supports)
 	index.js 	  	// Modular code you can require in this or other lambda functions.
 	package.json 	// For JS lambdas, include package.json here.  Require it in index.js
-show 				// Action/lambda level directory (Required)
-	awsm.json 		// Contains a "lambda" property and a "endpoint" property for this lambda
-	handler.js 		// Lambda function handler (JS example. Can be in any language AWS Lambda supports)
-	index.js 	  	// Modular code you can require in this or other lambda functions.
-	package.json 	// For JS lambdas, include package.json here.  Require it in index.js
-update 				// Action/lambda level directory (Required)
-	awsm.json 		// Contains a "lambda" property and a "endpoint" property for this lambda
-	handler.js 		// Lambda function handler (JS example. Can be in any language AWS Lambda supports)
-	index.js 	  	// Modular code you can require in this or other lambda functions.
-	package.json 	// For JS lambdas, include package.json here.  Require it in index.js
-delete 				// Action/lambda level directory (Required)
-	awsm.json 		// Contains a "lambda" property and a "endpoint" property for this lambda
-	handler.js 		// Lambda function handler (JS example. Can be in any language AWS Lambda supports)
-	index.js 	  	// Modular code you can require in this or other lambda functions.
-	package.json 	// For JS lambdas, include package.json here.  Require it in index.js
+show 				
+	awsm.json
+	handler.js
+	index.js
+	package.json
+update
+	awsm.json
+	handler.js
+	index.js
+	package.json
+delete
+	awsm.json
+	handler.js
+	index.js
+	package.json
 ```
 Remember, your lambda functions should be a thin wrapper around your own separate modules, to keep your code
 testable, reusable, and AWS independent.  Basically, put as little code as you can in **handler.js** and as much code
