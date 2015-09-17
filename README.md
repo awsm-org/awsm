@@ -18,7 +18,7 @@ This is the directory structure of an aws-module with one lambda function:
 
 ```
 awsm.json 			// Contains a "resources" property for the other resources required by this module and publishing information (name, author, etc.).
-create 					// Action/lambda level directory (Required)
+create				// Action/lambda level directory (Required)
 	awsm.json 		// Contains a "lambda" property and a "endpoint" property for this lambda
 	handler.js 		// Lambda function handler (JS example. Can be in any language AWS Lambda supports)
 	index.js 	  	// Modular code you can require in this or other lambda functions (JS example).
@@ -29,22 +29,22 @@ This is the directory structure of an aws-module with multiple lambda functions:
 
 ```
 awsm.json 			// Contains a "resources" property for the other resources required by this module and publishing information (name, author, etc.).
-create 					// Action/lambda level directory (Required)
+create 				// Action/lambda level directory (Required)
 	awsm.json 		// Contains a "lambda" property and a "endpoint" property for this lambda
 	handler.js 		// Lambda function handler (JS example. Can be in any language AWS Lambda supports)
 	index.js 	  	// Modular code you can require in this or other lambda functions.
 	package.json 	// For JS lambdas, include package.json here.  Require it in index.js
-show 						// Action/lambda level directory (Required)
+show 					// Action/lambda level directory (Required)
 	awsm.json 		// Contains a "lambda" property and a "endpoint" property for this lambda
 	handler.js 		// Lambda function handler (JS example. Can be in any language AWS Lambda supports)
 	index.js 	  	// Modular code you can require in this or other lambda functions.
 	package.json 	// For JS lambdas, include package.json here.  Require it in index.js
-update 					// Action/lambda level directory (Required)
+update 				// Action/lambda level directory (Required)
 	awsm.json 		// Contains a "lambda" property and a "endpoint" property for this lambda
 	handler.js 		// Lambda function handler (JS example. Can be in any language AWS Lambda supports)
 	index.js 	  	// Modular code you can require in this or other lambda functions.
 	package.json 	// For JS lambdas, include package.json here.  Require it in index.js
-delete 					// Action/lambda level directory (Required)
+delete 				// Action/lambda level directory (Required)
 	awsm.json 		// Contains a "lambda" property and a "endpoint" property for this lambda
 	handler.js 		// Lambda function handler (JS example. Can be in any language AWS Lambda supports)
 	index.js 	  	// Modular code you can require in this or other lambda functions.
