@@ -77,17 +77,12 @@ an API Gateway configuration, or both.  awsm.json files within resource/action d
 "apiGateway" property, or both.
 
 ```
-// All available properties for the "lambda" object are listed in this repo's awsm.json file
-
 "lambda": {
 	"enVars": [],
 	"package": {},
 	"excludePatterns": {},
 	"cloudFormation": {}
 },
-
-// All available properties for the "apiGateway" object are listed in this repo's awsm.json file
-
 "apiGateway": {
 	"cloudFormation": {}
 }
