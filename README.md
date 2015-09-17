@@ -50,8 +50,8 @@ delete 				// Action/lambda level directory (Required)
 	package.json 	// For JS lambdas, include package.json here.  Require it in index.js
 ```
 Remember, your lambda functions should be a thin wrapper around your own separate modules, to keep your code
-testable, reusable, and AWS independent.  Basically, put as little code as you can in **handler.js** and put all code
-in **index.js** and additional files.
+testable, reusable, and AWS independent.  Basically, put as little code as you can in **handler.js** and as much code
+as you can in **index.js** and additional files.
 
 ## Configuration
 
