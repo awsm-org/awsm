@@ -57,6 +57,8 @@ as you can in **index.js** and additional files.
 
 aws-modules' configuration settings and dependencies are described in **awsm.json** files located in the module.
 
+**Below are limited awsm.json examples.  To view all available properties see the [awsm.json file in this repo](./awsm.json).**
+
 At the module's root, you should have an **awsm.json** file which describes publishing information as well as
 AWS resources outside of the Lambda and API Gateway resources your module requires in the "resources" object:
 
@@ -66,10 +68,7 @@ AWS resources outside of the Lambda and API Gateway resources your module requir
 "version": "0.0.1",
 "location": "github.com/you/your_aws_modules_repo",
 "resources": {
-	"cloudFormation": {
-		"PolicyDocuments": [ ],
-		"Resources": { }
-	}
+	"cloudFormation": {}
 }
 ```
 
@@ -78,35 +77,18 @@ an API Gateway configuration, or both.  awsm.json files within resource/action d
 "apiGateway" property, or both.
 
 ```
+// All available properties for the "lambda" object are listed in this repo's awsm.json file
+
 "lambda": {
-	"cloudFormation": {
-		"Description": "",
-		"Handler": "",
-		"MemorySize": 1024,
-		"Runtime": "nodejs",
-		"Timeout": 6
-	}
+	"enVars": [],
+	"package": {},
+	"excludePatterns": {},
+	"cloudFormation": {}
 },
+
+// All available properties for the "apiGateway" object are listed in this repo's awsm.json file
+
 "apiGateway": {
-	"cloudFormation": {
-		"Type": "AWS",
-		"Path": "users/create",
-		"Method": "POST",
-		"AuthorizationType": "none",
-		"ApiKeyRequired": false,
-		"RequestTemplates": {},
-		"RequestParameters": {},
-		"Responses": {
-			"default": {
-				"statusCode": "200",
-				"responseParameters": {},
-				"responseTemplates": {
-				"application/json": ""
-			}
-		},
-		"400": {
-			"statusCode": "400"
-		}
-	}
+	"cloudFormation": {}
 }
 ```
