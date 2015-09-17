@@ -4,45 +4,55 @@ AWSM: Amazon Web Services Modules
 =================================
 
 **Amazon Web Services Modules (aws-modules)** contain one or multiple AWS Lambda functions,
-plus their AWS resource dependencies defined via AWS CloudFormation.
-
-The purpose of aws-modules is to encourage the development of lambda functions
+plus their AWS resource dependencies defined via AWS CloudFormation.  aws-modules differ from npm-modules in that they
+are mostly "templates", so they are meant to be customized.  The purpose of aws-modules is to encourage the development of lambda functions
 designed for re-use and easy installation into applications.
+
+aws-modules were designed to work with [JAWS: The Serverless AWS Framework](https://github.com/jaws-framework/JAWS).
+The JAWS command line tool gives you handy commands to rapidly create and install aws-modules into your serverless applications.
+View the JAWS documentation for more information.
 
 ## Structure
 
-This is the directory structure of an aws-module with 1 lambda function:
+This is the directory structure of an aws-module with one lambda function:
 
 ```
-awsm.json 		// Contains a "resources" property for the other resources required by this module
-aws_modules 		// The modules lambda function(s)
-  users 		// Resource level directory (Required)
-    create 		// Action level directory (Required)
-      awsm.json 	// Contains a "lambda" property and a "endpoint" property for this lambda
-      index.js 		// Lambda code. Can be in any language AWS Lambda supports
+awsm.json 			// Contains a "resources" property for the other resources required by this module and publishing information (name, author, etc.).
+create 					// Action/lambda level directory (Required)
+	awsm.json 		// Contains a "lambda" property and a "endpoint" property for this lambda
+	handler.js 		// Lambda function handler (JS example. Can be in any language AWS Lambda supports)
+	index.js 	  	// Modular code you can require in this or other lambda functions (JS example).
+	package.json 	// For JS lambdas, include package.json here.  Require it in index.js
 ```
 
 This is the directory structure of an aws-module with multiple lambda functions:
 
 ```
-awsm.json 			// Contains a "resources" property for the other resources required by module
-aws_modules 			// The modules lambda function(s)
-  users 			// Resource level directory (Required)
-    create 			// Action level directory (Required)
-      awsm.json 		// Contains a "lambda" property and a "endpoint" property
-      index.js 			// Lambda code. Can be in any language AWS Lambda supports
-    show 			// Action level directory (Required)
-      awsm.json 		// Contains a "lambda" property and a "endpoint" property
-      index.js 			// Lambda code. Can be in any language AWS Lambda supports
-    update 			// Action level directory (Required)
-      awsm.json 		// Contains a "lambda" property and a "endpoint" property
-      index.js			// Lambda code. Can be in any language AWS Lambda supports
-    delete 			// Action level directory (Required)
-      awsm.json 		// Contains a "lambda" property and a "endpoint" property
-      index.js                  // Lambda code. Can be in any language AWS Lambda supports
-lib 				// Contains code shared across all lambda functions
-  users-dynamodb.js		// Shared code
+awsm.json 			// Contains a "resources" property for the other resources required by this module and publishing information (name, author, etc.).
+create 					// Action/lambda level directory (Required)
+	awsm.json 		// Contains a "lambda" property and a "endpoint" property for this lambda
+	handler.js 		// Lambda function handler (JS example. Can be in any language AWS Lambda supports)
+	index.js 	  	// Modular code you can require in this or other lambda functions.
+	package.json 	// For JS lambdas, include package.json here.  Require it in index.js
+show 						// Action/lambda level directory (Required)
+	awsm.json 		// Contains a "lambda" property and a "endpoint" property for this lambda
+	handler.js 		// Lambda function handler (JS example. Can be in any language AWS Lambda supports)
+	index.js 	  	// Modular code you can require in this or other lambda functions.
+	package.json 	// For JS lambdas, include package.json here.  Require it in index.js
+update 					// Action/lambda level directory (Required)
+	awsm.json 		// Contains a "lambda" property and a "endpoint" property for this lambda
+	handler.js 		// Lambda function handler (JS example. Can be in any language AWS Lambda supports)
+	index.js 	  	// Modular code you can require in this or other lambda functions.
+	package.json 	// For JS lambdas, include package.json here.  Require it in index.js
+delete 					// Action/lambda level directory (Required)
+	awsm.json 		// Contains a "lambda" property and a "endpoint" property for this lambda
+	handler.js 		// Lambda function handler (JS example. Can be in any language AWS Lambda supports)
+	index.js 	  	// Modular code you can require in this or other lambda functions.
+	package.json 	// For JS lambdas, include package.json here.  Require it in index.js
 ```
+Remember, your lambda functions should be a thin wrapper around your own separate modules, to keep your code
+testable, reusable, and AWS independent.  Basically, put as little code as you can in **handler.js** and put all code
+in **index.js** and additional files.
 
 ## Configuration
 
@@ -72,32 +82,32 @@ an API Gateway configuration, or both.  awsm.json files within resource/action d
 "lambda": {
 	"cloudFormation": {
 		"Description": "",
-    "Handler": "",
-    "MemorySize": 1024,
-    "Runtime": "nodejs",
-    "Timeout": 6
+		"Handler": "",
+		"MemorySize": 1024,
+		"Runtime": "nodejs",
+		"Timeout": 6
 	}
 },
 "apiGateway": {
 	"cloudFormation": {
 		"Type": "AWS",
-    "Path": "users/create",
-    "Method": "POST",
-    "AuthorizationType": "none",
-    "ApiKeyRequired": false,
-    "RequestTemplates": {},
-    "RequestParameters": {},
-    "Responses": {
-    	"default": {
-      	"statusCode": "200",
-      	"responseParameters": {},
-      	"responseTemplates": {
-      	"application/json": ""
-      }
-    },
-    "400": {
-    	"statusCode": "400"
-    }
-  }
+		"Path": "users/create",
+		"Method": "POST",
+		"AuthorizationType": "none",
+		"ApiKeyRequired": false,
+		"RequestTemplates": {},
+		"RequestParameters": {},
+		"Responses": {
+			"default": {
+				"statusCode": "200",
+				"responseParameters": {},
+				"responseTemplates": {
+				"application/json": ""
+			}
+		},
+		"400": {
+			"statusCode": "400"
+		}
+	}
 }
 ```
