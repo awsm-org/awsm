@@ -3,9 +3,9 @@
 AWSM: Amazon Web Services Modules
 =================================
 
-**Amazon Web Services Modules (aws-modules)** contain one or multiple AWS Lambda functions,
-plus their AWS resource dependencies defined via AWS CloudFormation.  The purpose of aws-modules is to encourage the development of lambda functions
-designed for re-use and easy installation into applications.
+**Amazon Web Services Modules (aws-modules)** are one or multiple AWS Lambda functions that perform specific tasks,
+plus any AWS resource dependencies defined via AWS CloudFormation.  The purpose of aws-modules is to create an ecosystem of lambda functions
+designed for re-use and easy installation into serverless applications.
 
 aws-modules were designed to work with [JAWS: The Serverless AWS Framework](https://github.com/jaws-framework/JAWS).
 The JAWS command line tool gives you handy commands to rapidly create and install aws-modules into your serverless applications.
