@@ -66,8 +66,8 @@ AWS resources outside of the Lambda and API Gateway resources your module requir
 "location": "github.com/you/your_aws_modules_repo",
 "resources": {
 	"cloudFormation": {
-      		"LambdaIamPolicyDocumentStatements": [],
-      		"ApiGatewayIamPolicyDocumentStatements": [],
+		"LambdaIamPolicyDocumentStatements": [],
+		"ApiGatewayIamPolicyDocumentStatements": [],
 		"Resources": {}
 	}
 }
