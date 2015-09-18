@@ -65,7 +65,11 @@ AWS resources outside of the Lambda and API Gateway resources your module requir
 "version": "0.0.1",
 "location": "github.com/you/your_aws_modules_repo",
 "resources": {
-	"cloudFormation": {}
+	"cloudFormation": {
+		"LambdaIamPolicyDocuments": [],
+		"ApiGatewayIamPolicyDocuments": [],
+		"Resources": {}
+	}
 }
 ```
 
@@ -78,7 +82,12 @@ an API Gateway configuration, or both.  awsm.json files within resource/action d
 	"enVars": [],
 	"package": {},
 	"excludePatterns": {},
-	"cloudFormation": {}
+	"cloudFormation": {
+		"Description": "",
+		"MemorySize": 1024,
+		"Runtime": "nodejs",
+		"Timeout": 6
+	}
 },
 "apiGateway": {
 	"cloudFormation": {}
