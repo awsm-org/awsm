@@ -50,6 +50,10 @@ Remember, your lambda functions should be a thin wrapper around your own separat
 testable, reusable, and AWS independent.  Basically, put as little code as you can in **handler.js** and as much code
 as you can in **index.js** and additional files.
 
+## JAWS CLI `module` command
+
+The JAWS CLI `module` command is used to create,install, and upgrade awsm's.
+
 ## Configuration
 
 aws-modules' configuration settings and dependencies are described in **awsm.json** files located in the module.
@@ -93,3 +97,29 @@ an API Gateway configuration, or both.  awsm.json files within resource/action d
 	"cloudFormation": {}
 }
 ```
+
+
+##### Lambda configuration options
+
+**Note**: All of the attrs below assume the `lambda` attribute key prefix.
+
+* `Handler,MemorySize,Runtime,Timeout`: can all be found in the [aws docs](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-lambda-function.html)
+  * We recommend 1024 memory to improve cold/warm start times. `handler` is relative to back dir
+* `envVars`: An array of environment variable names this project/module or lambda requires
+* `deploy`: if true, this app will be deployed the next time the `jaws deploy --tags` is run. See `deploy` command docs for more info.
+* `package`: How the code is packaged up into a zip file
+  * `optimize`: How code is optimized for node runtimes, to improve lambda cold start time
+    * `builder`: only `"browserify"` or `false` supported now.  If `false` will just zip up entire `back` dir
+    * `minify`: js minify or not
+    * `ignore`: array of node modules to ignore. See [ignoring](https://github.com/substack/browserify-handbook#ignoring-and-excluding)
+    * `exclude`: array of node modules to exclude.  These modules will be loaded externally (from within zip or inside lambda).  Note `aws-sdk` for node [can not be browserified](https://github.com/aws/aws-sdk-js/issues/696). See [ignoring](https://github.com/substack/browserify-handbook#ignoring-and-excluding)
+    * `includePaths`: Paths rel to back (dirs or files) to be included in zip. Paths included after optimization step.
+  * `excludePatterns`: Array of regular expressions rel to back. Removed before optimization step. If not optimizing, everything in back dir will be included in zip. Use this to exclude stuff you don't want in your zip.  Strings will be passed to `new RegExp()`
+
+For an optimize example using the most popular node modules see [browserify tests](../tests/test-prj/back/aws_modules/bundle/browserify)
+
+For non optimize example see [non optimized tests](../tests/test-prj/back/aws_modules/bundle/nonoptimized)
+
+##### API Gateway attributes:
+
+TODO
