@@ -76,6 +76,7 @@ AWS resources outside of the Lambda and API Gateway resources your module requir
 	}
 }
 ```
+**Note** that JAWS defines some [CF parameters](https://github.com/jaws-framework/JAWS/blob/master/docs/project_structure.md#resources-cfjson) that can be used as `"Ref"`s
 
 Within each resource/action directory is another **awsm.json** which describes either an AWS Lambda configuration,
 an API Gateway configuration, or both.  awsm.json files within resource/action directories only need a "lambda" or
