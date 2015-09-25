@@ -124,3 +124,9 @@ For non optimize example see [non optimized tests](../tests/test-prj/back/aws_mo
 ##### API Gateway attributes:
 
 TODO
+
+## Sample awsm
+
+https://github.com/awsm-org/img-resize
+
+The awsm above exercises many of the jaws extension points. Also showcases how to browserify your lambda code and still include a non-optimized ver of aws-sdk. 
