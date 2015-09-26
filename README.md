@@ -131,7 +131,7 @@ The aws-module format is only a few weeks old and we don't have a registry yet. 
 
 ####awsm-users - https://github.com/dekz/awsm-users
 
-Creates REST API routes creating and authenticating users for your application via DynamoDB.
+Creates REST API routes for User creation and authentication for your application via DynamoDB.
 
 ####awsm-cloudfront - https://github.com/boushley/awsm-cloudfront
 
@@ -139,7 +139,7 @@ This allows for hosting a web application entirely using JAWS.  Puts an AWS Clou
 
 ####awsm-images - https://github.com/awsm-org/awsm-images
 
-Creates a REST API route for creating an image thumbnail that will resize any image URL submitted. This exercises many of the aws-module configurations. It also showcases how to browserify your lambda code and still include a non-optimized ver of aws-sdk.
+Creates REST API routes for image modifications.  This exercises many of the aws-module configurations. It also showcases how to browserify your lambda code and still include a non-optimized ver of aws-sdk.
 
 
 
