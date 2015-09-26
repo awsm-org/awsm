@@ -137,7 +137,7 @@ Creates REST API routes creating and authenticating users for your application v
 
 This allows for hosting a web application entirely using JAWS.  Puts an AWS Cloudfront distribution in front of a static S3 bucket and API Gateway endpoints all on the same domain to avoid any same origin problems.  No need for CORS!
 
-####image-resize - https://github.com/awsm-org/img-resize
+####awsm-images - https://github.com/awsm-org/awsm-images
 
 Creates a REST API route for creating an image thumbnail that will resize any image URL submitted. This exercises many of the aws-module configurations. It also showcases how to browserify your lambda code and still include a non-optimized ver of aws-sdk.
 
