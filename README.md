@@ -129,15 +129,15 @@ TODO
 
 The aws-module format is only a few weeks old and we don't have a registry yet.  For the time being, here is a list of aws-modules:
 
-• **awsm-users** - https://github.com/dekz/awsm-users
+####awsm-users - https://github.com/dekz/awsm-users
 
 Creates REST API routes creating and authenticating users for your application via DynamoDB.
 
-* **awsm-cloudfront** - https://github.com/boushley/awsm-cloudfront
+####awsm-cloudfront - https://github.com/boushley/awsm-cloudfront
 
 This allows for hosting a web application entirely using JAWS.  Puts an AWS Cloudfront distribution in front of a static S3 bucket and API Gateway endpoints all on the same domain to avoid any same origin problems.  No need for CORS!
 
-• **image-resize** - https://github.com/awsm-org/img-resize
+####image-resize - https://github.com/awsm-org/img-resize
 
 Creates a REST API route for creating an image thumbnail that will resize any image URL submitted. This exercises many of the aws-module configurations. It also showcases how to browserify your lambda code and still include a non-optimized ver of aws-sdk.
 
