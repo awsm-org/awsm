@@ -141,9 +141,10 @@ This allows for hosting a web application entirely using JAWS.  Puts an AWS Clou
 
 Creates REST API routes for image modifications.  This exercises many of the aws-module configurations. It also showcases how to browserify your lambda code and still include a non-optimized ver of aws-sdk.
 
+####awsm-middleware - https://github.com/jwulf/awsm-middleware
+
+Middleware for your JAWS project, based on segment.io
+
 ####awsm-loggly - https://github.com/jwulf/awsm-loggly
 
-An awsm that has no lambdas but exports code you can use to send logging to Loggly from your lambdas.  Allows you to trace application execution across multiple lambdas and debug your application flow.
-
-
-
+An awsm that has no lambdas but instead exports code you can use to send logging to Loggly from your lambdas.  Allows you to trace application execution across multiple lambdas and debug your application flow.
