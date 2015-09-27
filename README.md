@@ -125,6 +125,22 @@ For non optimize example see [non optimized tests](../tests/test-prj/back/aws_mo
 
 TODO
 
+## AWSM Ideas & Themes
+
+So many things can be aws-modules.  Here are some most-demanded themes for inspiration:
+
+* **Users/Sessions CRUD** - Bonus if you include sign on via popular 3rd party services (e.g., Github)
+* **Analytics/Event Functions** - Captures common user events
+* **Image functions** - Resize, filters, etc.
+* **Email - Transactional** email functions (e.g., receipt, welcome, where you been?)
+* **Email - Marketing** - Blasting html emails to many addresses for dirt cheap via Lambda + SES
+* **Stripe Webhook Handlers**
+* **Slack Webhook handlers**
+* **Webhook handlers for all the things**
+* **Twilio functions** - Send SMS
+* **3rd Party Authentication Handlers** - Pre-built authentication with the most popular peeps.
+* **Proxy Modules** - API Gateway has the ability to be a proxy for other endpoints and do request and response transforms without ever needing lambda.  This presents an opportunity for people to make their own API endpoints that mask other API endpoints and publish those as aws-modules.  For example, you can mask a Slack API endpoint with api.yourapp.com/slack/post_message and define how the response from Slack should be transformed in your awsm.apiGateway.cloudFormation template and publish that as a module for others to reuse.
+
 ## AWSM's
 
 The aws-module format is only a few weeks old and we don't have a registry yet.  For the time being, here is a list of aws-modules:
