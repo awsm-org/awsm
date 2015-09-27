@@ -141,7 +141,7 @@ So many things can be aws-modules.  Here are some most-demanded themes for inspi
 * **3rd Party Authentication Handlers** - Pre-built authentication with the most popular peeps.
 * **Proxy Modules** - API Gateway has the ability to be a proxy for other endpoints and do request and response transforms without ever needing lambda.  This presents an opportunity for people to make their own API endpoints that mask other API endpoints and publish those as aws-modules.  For example, you can mask a Slack API endpoint with api.yourapp.com/slack/post_message and define how the response from Slack should be transformed in your awsm.apiGateway.cloudFormation template and publish that as a module for others to reuse.
 
-## AWSM's
+## AWSM Examples
 
 The aws-module format is only a few weeks old and we don't have a registry yet.  For the time being, here is a list of aws-modules:
 
