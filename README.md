@@ -148,3 +148,7 @@ Middleware for your JAWS project, based on segment.io
 ####awsm-loggly - https://github.com/jwulf/awsm-loggly
 
 An awsm that has no lambdas but instead exports code you can use to send logging to Loggly from your lambdas.  Allows you to trace application execution across multiple lambdas and debug your application flow.
+
+####awsm-twilio - https://github.com/eahefnawy/awsm-twilio
+
+JAWS package/Lambda func. to send SMS via Twilio.
