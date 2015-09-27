@@ -52,7 +52,7 @@ as you can in **index.js** and additional files.
 
 ## JAWS CLI `module` command
 
-The JAWS CLI [`module` command](https://github.com/jaws-framework/JAWS/blob/cf-deploy/docs/commands.md#jaws-module) is used to create,install, and upgrade awsm's.
+The JAWS CLI [`module` command](https://github.com/jaws-framework/JAWS/blob/master/docs/commands.md#module-commands) is used to create,install, and upgrade awsm's.
 
 ## Configuration
 
