@@ -52,13 +52,13 @@
       "CacheNamespace": "String",
       "CacheKeyParameters": [],
       "Responses": {
-        "2//d{2}": {
+        "default": {
           "statusCode": "200",
           "responseParameters": {
             "method.response.header.test-method-response-header": "integration.response.header.integrationResponseHeaderParam1"
           },
           "responseTemplates": {
-            "application/json": "json 200 response template"
+            "application/json": {}
           }
         }
       }
