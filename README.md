@@ -168,3 +168,11 @@ An awsm that has no lambdas but instead exports code you can use to send logging
 ####awsm-twilio - https://github.com/eahefnawy/awsm-twilio
 
 JAWS package/Lambda func. to send SMS via Twilio.
+
+####awsm-stripe-webhook - https://github.com/eahefnawy/awsm-stripe-webhook
+
+JAWS package/API endpint/Webhook for your stripe notifications 
+
+####awsm-slack-webhook - https://github.com/eahefnawy/awsm-slack-webhook
+
+JAWS package/API endpint/Webhook for Slack
