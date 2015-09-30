@@ -176,3 +176,7 @@ JAWS package/API endpint/Webhook for your stripe notifications
 ####awsm-slack-webhook - https://github.com/eahefnawy/awsm-slack-webhook
 
 JAWS package/API endpint/Webhook for Slack
+
+####awsm-mailer - https://github.com/eahefnawy/awsm-mailer
+
+AWSM package for sending emails.
