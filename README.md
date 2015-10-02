@@ -11,13 +11,14 @@ aws-modules were designed to work with [JAWS: The Serverless AWS Framework](http
 The JAWS command line tool gives you handy commands to rapidly create and install aws-modules into your serverless applications.
 View the JAWS documentation for more information.
 
+A simple, refrence aws module can be found at https://github.com/awsm-org/awsm-images
+
 ## Structure
 
 This is the directory structure of an aws-module with one lambda function:
 
 ```
 awsm.json 			// Contains a "resources" property for the other resources required by this module and publishing information (name, author, etc.).
-package.json		// For JS lambdas, include package.json here.  Require it in index.js
 create				// Action/lambda level directory (Required)
 	awsm.json 		// Contains a "lambda" property and a "endpoint" property for this lambda
 	handler.js 		// Lambda function handler (JS example. Can be in any language AWS Lambda supports)
@@ -28,31 +29,38 @@ This is the directory structure of an aws-module with multiple lambda functions:
 
 ```
 awsm.json 			// Contains a "resources" property for the other resources required by this module and publishing information (name, author, etc.).
-package.json 		// For JS lambdas, include package.json here.  Require it in index.js
 create 				// Action/lambda level directory (Required)
 	awsm.json 		// Contains a "lambda" property and a "endpoint" property for this lambda
+	event.json		// For testing via the `jaws run` command
 	handler.js 		// Lambda function handler (JS example. Can be in any language AWS Lambda supports)
 	index.js 	  	// Modular code you can require in this or other lambda functions.
 show
 	awsm.json
+	event.json
 	handler.js
 	index.js
 update
 	awsm.json
+	event.json
 	handler.js
 	index.js
 delete
 	awsm.json
+	event.json
 	handler.js
 	index.js
 ```
+
 Remember, your lambda functions should be a thin wrapper around your own separate modules, to keep your code
-testable, reusable, and AWS independent.  Basically, put as little code as you can in **handler.js** and as much code
-as you can in **index.js** and additional files.
+testable, reusable, and AWS independent.  Basically, put as little code as you can in **handler.js** and  **index.js**.
 
 ## JAWS CLI `module` command
 
-The JAWS CLI [`module` command](https://github.com/jaws-framework/JAWS/blob/master/docs/commands.md#module-commands) is used to create,install, and upgrade awsm's.
+The JAWS CLI [`module create` command](https://github.com/jaws-framework/JAWS/blob/master/docs/commands.md#module-commands) is used to create a module.  It will generate the base aws scaffolding, as well as the default package manager scaffolding.  For example, for nodejs, npm is the default and therefore will create npm module dir and scaffolding under `<project dir>/node_modules/<awsm name>`.  Work can then be done on your new module in an actual project.
+
+## aws module install/update
+
+We leverage the most popualar package manager for the runtime and utilize a post-install hook to JAWS stuff.  For example in nodejs: `npm install awsm-images --save`.  See [`lib/commands/postinstall.js`](https://github.com/jaws-framework/JAWS/blob/master/lib/commands/postinstall.js) for more information.
 
 ## Configuration
 
@@ -104,8 +112,6 @@ an API Gateway configuration, or both.  awsm.json files within resource/action d
 
 **Note**: All of the attrs below assume the `lambda` attribute key prefix.
 
-* `Handler,MemorySize,Runtime,Timeout`: can all be found in the [aws docs](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-lambda-function.html)
-  * We recommend 1024 memory to improve cold/warm start times. `handler` is relative to back dir
 * `envVars`: An array of environment variable names this project/module or lambda requires
 * `deploy`: if true, this app will be deployed the next time the `jaws deploy --tags` is run. See `deploy` command docs for more info.
 * `package`: How the code is packaged up into a zip file
@@ -116,7 +122,9 @@ an API Gateway configuration, or both.  awsm.json files within resource/action d
     * `exclude`: array of node modules to exclude.  These modules will be loaded externally (from within zip or inside lambda).  Note `aws-sdk` for node [can not be browserified](https://github.com/aws/aws-sdk-js/issues/696). See [ignoring](https://github.com/substack/browserify-handbook#ignoring-and-excluding)
     * `includePaths`: Paths rel to back (dirs or files) to be included in zip. Paths included after optimization step.
   * `excludePatterns`: Array of regular expressions rel to back. Removed before optimization step. If not optimizing, everything in back dir will be included in zip. Use this to exclude stuff you don't want in your zip.  Strings will be passed to `new RegExp()`
-
+* `cloudFormation`
+  * `Handler,MemorySize,Runtime,Timeout`: can all be found in the [aws docs](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-lambda-function.html)
+    * We recommend 1024 memory to improve cold/warm start times. `handler` is relative to back dir
 For an optimize example using the most popular node modules see [browserify tests](../tests/test-prj/back/aws_modules/bundle/browserify)
 
 For non optimize example see [non optimized tests](../tests/test-prj/back/aws_modules/bundle/nonoptimized)
