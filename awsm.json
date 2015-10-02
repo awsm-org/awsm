@@ -30,7 +30,7 @@
     ],
     "cloudFormation": {
       "Description": "lambda function description",
-      "Handler": "resource/action/index.handler",
+      "Handler": "aws_modules/resource/action/handler.handler",
       "MemorySize": 1024,
       "Runtime": "nodejs",
       "Timeout": 10
