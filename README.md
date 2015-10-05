@@ -188,3 +188,7 @@ JAWS package/API endpint/Webhook for Slack
 ####awsm-mailer - https://github.com/eahefnawy/awsm-mailer
 
 AWSM package for sending emails.
+
+####awsm-s3tokenvendor - https://github.com/binoculars/awsm-s3tokenvendor
+
+AWS Module to generate S3 upload tokens
