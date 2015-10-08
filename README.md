@@ -149,46 +149,6 @@ So many things can be aws-modules.  Here are some most-demanded themes for inspi
 * **3rd Party Authentication Handlers** - Pre-built authentication with the most popular peeps.
 * **Proxy Modules** - API Gateway has the ability to be a proxy for other endpoints and do request and response transforms without ever needing lambda.  This presents an opportunity for people to make their own API endpoints that mask other API endpoints and publish those as aws-modules.  For example, you can mask a Slack API endpoint with api.yourapp.com/slack/post_message and define how the response from Slack should be transformed in your awsm.apiGateway.cloudFormation template and publish that as a module for others to reuse.
 
-## Examples
+## Registry
 
-The aws-module format is only a few weeks old and we don't have a registry yet.  For the time being, here is a list of aws-modules:
-
-####awsm-users - https://github.com/dekz/awsm-users
-
-Creates REST API routes for User creation and authentication for your application via DynamoDB.
-
-####awsm-cloudfront - https://github.com/boushley/awsm-cloudfront
-
-This allows for hosting a web application entirely using JAWS.  Puts an AWS Cloudfront distribution in front of a static S3 bucket and API Gateway endpoints all on the same domain to avoid any same origin problems.  No need for CORS!
-
-####awsm-images - https://github.com/awsm-org/awsm-images
-
-Creates REST API routes for image modifications.  This exercises many of the aws-module configurations. It also showcases how to browserify your lambda code and still include a non-optimized ver of aws-sdk.
-
-####awsm-middleware - https://github.com/jwulf/awsm-middleware
-
-Middleware for your JAWS project, based on segment.io
-
-####awsm-loggly - https://github.com/jwulf/awsm-loggly
-
-An awsm that has no lambdas but instead exports code you can use to send logging to Loggly from your lambdas.  Allows you to trace application execution across multiple lambdas and debug your application flow.
-
-####awsm-twilio - https://github.com/eahefnawy/awsm-twilio
-
-JAWS package/Lambda func. to send SMS via Twilio.
-
-####awsm-stripe-webhook - https://github.com/eahefnawy/awsm-stripe-webhook
-
-JAWS package/API endpint/Webhook for your stripe notifications 
-
-####awsm-slack-webhook - https://github.com/eahefnawy/awsm-slack-webhook
-
-JAWS package/API endpint/Webhook for Slack
-
-####awsm-mailer - https://github.com/eahefnawy/awsm-mailer
-
-AWSM package for sending emails.
-
-####awsm-s3tokenvendor - https://github.com/binoculars/awsm-s3tokenvendor
-
-AWS Module to generate S3 upload tokens
+Want to tell the world about your aws module? Send a pull request against [registry.json](./registry.json). This poor mans registry is just a temporary solution.
