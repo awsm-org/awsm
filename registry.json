@@ -1,0 +1,52 @@
+[
+  {
+    "name":"awsm-images",
+    "url":"https://github.com/awsm-org/awsm-images",
+    "description":"awsm refrence implementation.  Creates REST API routes for image modifications. This exercises many of the aws-module configurations. It also showcases how to browserify your lambda code and still include a non-optimized ver of aws-sdk."
+  },
+  {
+    "name":"awsm-users",
+    "url":"https://github.com/dekz/awsm-users",
+    "description":"Creates REST API routes for User creation and authentication for your application via DynamoDB"
+  },
+  {
+    "name":"awsm-cloudfront",
+    "url":"https://github.com/boushley/awsm-cloudfront",
+    "description":"This allows for hosting a web application entirely using JAWS. Puts an AWS Cloudfront distribution in front of a static S3 bucket and API Gateway endpoints all on the same domain to avoid any same origin problems. No need for CORS!"
+  },
+  {
+    "name":"awsm-middleware",
+    "url":"https://github.com/jwulf/awsm-middleware",
+    "description":"Middleware for your JAWS project, based on segment.io"
+  },
+  {
+    "name":"awsm-loggly",
+    "url":"https://github.com/jwulf/awsm-loggly",
+    "description":"An awsm that has no lambdas but instead exports code you can use to send logging to Loggly from your lambdas. Allows you to trace application execution across multiple lambdas and debug your application flow."
+  },
+  {
+    "name":"awsm-twilio",
+    "url":"https://github.com/eahefnawy/awsm-twilio",
+    "description":"JAWS package/Lambda func. to send SMS via Twilio."
+  },
+  {
+    "name":"awsm-stripe-webhook ",
+    "url":"https://github.com/eahefnawy/awsm-stripe-webhook",
+    "description":"JAWS package/API endpint/Webhook for your stripe notifications"
+  },
+  {
+    "name":"awsm-slack-webhook",
+    "url":"https://github.com/eahefnawy/awsm-slack-webhook",
+    "description":"JAWS package/API endpint/Webhook for Slack"
+  },
+  {
+    "name":"awsm-mailer",
+    "url":"https://github.com/eahefnawy/awsm-mailer",
+    "description":"AWSM package for sending emails."
+  },
+  {
+    "name":"awsm-s3tokenvendor",
+    "url":"https://github.com/binoculars/awsm-s3tokenvendor",
+    "description":"AWS Module to generate S3 upload tokens"
+  }
+]
