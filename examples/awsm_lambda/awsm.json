@@ -1,16 +1,9 @@
-/**
-*
+/*
 * awsm.json
-*
-* - This file shows all properties available to awsm.json files and the value types they expect
-*
+* - This file shows ALL properties available for awsm.json files located at the root of a lambda subfolder
 */
 
 {
-  "name": "moduleName",
-  "description": "A description of your aws-module",
-  "version": "0.0.1",
-  "location": "github url to your module's repo",
   "lambda": {
     "envVars": ["string"],
     "package": {
@@ -62,13 +55,6 @@
           }
         }
       }
-    }
-  },
-  "resources": {
-    "cloudFormation": {
-      "LambdaIamPolicyDocumentStatements": [],
-      "ApiGatewayIamPolicyDocumentStatements": [],
-      "Resources": {}
     }
   }
 }

@@ -29,9 +29,11 @@ The JAWS command line tool comes with commands to create and install *aws-module
 
 ## awsm.json
 
-The defining feature of an *aws-module* is an `awsm.json` file located at the root of the module.  *aws-modules'* configuration settings, dependencies and authorship details are described in this `awsm.json` file.  Below, are limited `awsm.json` examples.  To view all available properties, see the [awsm.json file in this repo](./awsm.json).
-
 #### awsm.json At Module Root
+
+[Example of an `awsm.json` at the root of an aws-module](examples/awsm_root/awsm.json)
+
+The defining feature of an *aws-module* is an `awsm.json` file located at the root of the module.  *aws-modules'* configuration settings, dependencies and authorship details are described in this `awsm.json` file.  Below, are limited `awsm.json` examples.  To view all available properties, see the [awsm.json file in this repo](./awsm.json).
 
 Any required AWS resources (e.g., DynamoDB, S3) **outside** of the Lambda and API Gateway resources your module requires in the "resources" object:
 
@@ -52,6 +54,8 @@ Any required AWS resources (e.g., DynamoDB, S3) **outside** of the Lambda and AP
 Please note that JAWS defines some standard [ AWS CloudFormation parameters](https://github.com/jaws-framework/JAWS/blob/master/docs/project_structure.md#resources-cfjson) that can be used as `"Ref"`'s
 
 #### awsm.json At Lambda Root
+
+[Example of an `awsm.json` at the root of a lambda sub-folder](examples/awsm_lambda/awsm.json)
 
 Within each resource/lambda directory is another **awsm.json** which describes either an AWS Lambda configuration,
 an API Gateway configuration, or both.  `awsm.json` files within resource/action directories need only a "lambda" or

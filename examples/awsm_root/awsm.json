@@ -1,0 +1,71 @@
+/*
+* awsm.json
+* - This file shows ALL properties available for awsm.json files located at the root of an aws_module
+*/
+
+{
+  "name": "moduleName",
+  "description": "A description of your aws-module",
+  "version": "0.0.1",
+  "location": "github url to your module's repo",
+  "lambda": {
+    "envVars": ["string"],
+    "package": {
+      "optimize": {
+        "builder": "browserify",
+        "minify": true,
+        "ignore": [],
+        "exclude": [
+          "aws-sdk"
+        ],
+        "includePaths": []
+      }
+    },
+    "excludePatterns": [
+      "lambdas/[u].*",
+      "lambdas/bundle/b.*"
+    ],
+    "cloudFormation": {
+      "Description": "lambda function description",
+      "Handler": "aws_modules/resource/action/handler.handler",
+      "MemorySize": 1024,
+      "Runtime": "nodejs",
+      "Timeout": 10
+    }
+  },
+  "apiGateway": {
+    "cloudFormation": {
+      "Type": "AWS",
+      "Path": "resource/action",
+      "Method": "POST",
+      "AuthorizationType": "none",
+      "ApiKeyRequired": false,
+      "RequestTemplates": {
+        "application/json": "{\"access_token\":\"$input.params('access_token')\",\"body\":\"$input.json('$')\"}"
+      },
+      "RequestParameters": {
+        "integration.request.querystring.integrationQueryParam": "method.request.querystring.access_token"
+      },
+      "CacheNamespace": "String",
+      "CacheKeyParameters": [],
+      "Responses": {
+        "default": {
+          "statusCode": "200",
+          "responseParameters": {
+            "method.response.header.test-method-response-header": "integration.response.header.integrationResponseHeaderParam1"
+          },
+          "responseTemplates": {
+            "application/json": {}
+          }
+        }
+      }
+    }
+  },
+  "resources": {
+    "cloudFormation": {
+      "LambdaIamPolicyDocumentStatements": [],
+      "ApiGatewayIamPolicyDocumentStatements": [],
+      "Resources": {}
+    }
+  }
+}
