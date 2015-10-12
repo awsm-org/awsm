@@ -3,7 +3,6 @@
 AWSM: Amazon Web Services Modules
 =================================
 
-##### Table Of Contents:
 * **[Intro](https://github.com/awsm-org/awsm#intro)**
 * **[awsm.json](https://github.com/awsm-org/awsm#awsmjson)**
 	* **[awsm.json At Module Root](https://github.com/awsm-org/awsm#awsmjson-at-module-root)**
@@ -24,7 +23,7 @@ AWSM: Amazon Web Services Modules
 The purpose of the *aws-module* format is to create an ecosystem of re-usable, standardized, optimized Lambda functions ready for deployment and easy installation into serverless projects.
 
 *aws-modules* were designed to work with [JAWS: The Serverless AWS Framework](https://github.com/jaws-framework/JAWS).
-The JAWS command line tool comes with commands to create and install *aws-modules* into your serverless projects.  View the (JAWS documentation)[https://github.com/jaws-framework/JAWS/tree/master/docs] for more information.
+The JAWS command line tool comes with commands to create and install *aws-modules* into your serverless projects.  View the [JAWS documentation](https://github.com/jaws-framework/JAWS/tree/master/docs) for more information.
 
 *aws-modules* will soon support all of the languages AWS Lambda supports.  Currently, only javascript (node.js) is supported.  Building a module system that supports multiple programming languages is challenging, but since the functions of serverless projects/applications are completely isolated, functions written in different programming languages can be combined within the same project.  Given some languages are more efficient for specific tasks, this is a nice benefit.
 
@@ -50,7 +49,7 @@ Any required AWS resources (e.g., DynamoDB, S3) **outside** of the Lambda and AP
 }
 ```
 
-Please note that JAWS defines some standard [ AWS CloudFormation parameters](https://github.com/jaws-framework/JAWS/blob/master/docs/project_structure.md#resources-cfjson) that can be used as `"Ref"`s
+Please note that JAWS defines some standard [ AWS CloudFormation parameters](https://github.com/jaws-framework/JAWS/blob/master/docs/project_structure.md#resources-cfjson) that can be used as `"Ref"`'s
 
 #### awsm.json At Lambda Root
 
@@ -93,10 +92,6 @@ an API Gateway configuration, or both.  `awsm.json` files within resource/action
 * `cloudFormation`
   * `Handler,MemorySize,Runtime,Timeout`: can all be found in the [aws docs](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-lambda-function.html)
     * We recommend 1024 memory to improve cold/warm start times. `handler` is relative to back dir
-For an optimize example using the most popular node modules see [browserify tests](../tests/test-prj/back/aws_modules/bundle/browserify)
-
-For non optimize example see [non optimized tests](../tests/test-prj/back/aws_modules/bundle/nonoptimized)
-
 
 
 ## Creating AWS-Modules
