@@ -3,73 +3,23 @@
 AWSM: Amazon Web Services Modules
 =================================
 
-**Amazon Web Services Modules (aws-modules)** are one or multiple AWS Lambda functions that perform specific tasks,
-plus any AWS resource dependencies defined via AWS CloudFormation.  The purpose of aws-modules is to create an ecosystem of lambda functions
-designed for re-use and easy installation into serverless applications.
+**Amazon Web Services Modules (aws-modules, awsm’s)** contain pre-written, isolated functions ready to run on one or multiple AWS Lambda functions. Some examples are: *functions that send out emails, register users or handle webhooks from other services*.
+
+The purpose of the aws-modules format is to create an ecosystem of re-usable, standardized, optimized Lambda functions ready for deployment and easy installation into serverless projects.
 
 aws-modules were designed to work with [JAWS: The Serverless AWS Framework](https://github.com/jaws-framework/JAWS).
-The JAWS command line tool gives you handy commands to rapidly create and install aws-modules into your serverless applications.
-View the JAWS documentation for more information.
+The JAWS command line tool comes with commands to create and install aws-modules into your serverless projects.  View the (JAWS documentation)[] for more information.
 
-A simple, refrence aws module can be found at https://github.com/awsm-org/awsm-images
+aws-modules will soon support all of the languages AWS Lambda supports.  Currently, only javascript (node.js) is supported.  Building a module system that supports multiple programming languages is challenging, but since the functions of serverless projects/applications are completely isolated, functions written in different programming languages can be combined within the same project.  Given some languages are more efficient for specific tasks, this is a nice benefit.
 
-## Structure
-
-This is the directory structure of an aws-module with one lambda function:
-
-```
-awsm.json 			// Contains a "resources" property for the other resources required by this module and publishing information (name, author, etc.).
-create				// Action/lambda level directory (Required)
-	awsm.json 		// Contains a "lambda" property and a "endpoint" property for this lambda
-	handler.js 		// Lambda function handler (JS example. Can be in any language AWS Lambda supports)
-	index.js 	  	// Modular code you can require in this or other lambda functions (JS example).
-```
-
-This is the directory structure of an aws-module with multiple lambda functions:
-
-```
-awsm.json 			// Contains a "resources" property for the other resources required by this module and publishing information (name, author, etc.).
-create 				// Action/lambda level directory (Required)
-	awsm.json 		// Contains a "lambda" property and a "endpoint" property for this lambda
-	event.json		// For testing via the `jaws run` command
-	handler.js 		// Lambda function handler (JS example. Can be in any language AWS Lambda supports)
-	index.js 	  	// Modular code you can require in this or other lambda functions.
-show
-	awsm.json
-	event.json
-	handler.js
-	index.js
-update
-	awsm.json
-	event.json
-	handler.js
-	index.js
-delete
-	awsm.json
-	event.json
-	handler.js
-	index.js
-```
-
-Remember, your lambda functions should be a thin wrapper around your own separate modules, to keep your code
-testable, reusable, and AWS independent.  Basically, put as little code as you can in **handler.js** and  **index.js**.
-
-## JAWS CLI `module` command
-
-The JAWS CLI [`module create` command](https://github.com/jaws-framework/JAWS/blob/master/docs/commands.md#module-commands) is used to create a module.  It will generate the base aws scaffolding, as well as the default package manager scaffolding.  For example, for nodejs, npm is the default and therefore will create npm module dir and scaffolding under `<project dir>/node_modules/<awsm name>`.  Work can then be done on your new module in an actual project.
-
-## aws module install/update
-
-We leverage the most popualar package manager for the runtime and utilize a post-install hook to JAWS stuff.  For example in nodejs: `npm install awsm-images --save`.  See [`lib/commands/postinstall.js`](https://github.com/jaws-framework/JAWS/blob/master/lib/commands/postinstall.js) for more information.
-
-## Configuration
+## awsm.json
 
 aws-modules' configuration settings and dependencies are described in **awsm.json** files located in the module.
 
 **Below are limited awsm.json examples.  To view all available properties see the [awsm.json file in this repo](./awsm.json).**
 
-At the module's root, you should have an **awsm.json** file which describes publishing information as well as
-AWS resources outside of the Lambda and API Gateway resources your module requires in the "resources" object:
+At your module's root, you should have an **awsm.json** file which describes publishing information as well as any required
+AWS resources (e.g., DynamoDB, S3) outside of the Lambda and API Gateway resources your module requires in the "resources" object:
 
 ```
 "name": "usersCreate",
@@ -84,7 +34,7 @@ AWS resources outside of the Lambda and API Gateway resources your module requir
 	}
 }
 ```
-**Note** that JAWS defines some [CF parameters](https://github.com/jaws-framework/JAWS/blob/master/docs/project_structure.md#resources-cfjson) that can be used as `"Ref"`s
+**Note** that JAWS defines some standard [ AWS CloudFormation parameters](https://github.com/jaws-framework/JAWS/blob/master/docs/project_structure.md#resources-cfjson) that can be used as `"Ref"`s
 
 Within each resource/action directory is another **awsm.json** which describes either an AWS Lambda configuration,
 an API Gateway configuration, or both.  awsm.json files within resource/action directories only need a "lambda" or
@@ -133,6 +83,91 @@ For non optimize example see [non optimized tests](../tests/test-prj/back/aws_mo
 
 TODO
 
+
+
+## Creating AWS-Modules
+
+Whether you are writing aws-modules exclusively for your serverless project (every Lambda function in a JAWS project is an aws-module) or writing them for sharing publicly, the process to create them is the same.
+
+* Install the JAWS command line tool via npm, which you will use to generate scaffolding for new aws-modules:
+
+		$ npm install jaws-framework -g
+
+* Create a new JAWS project:
+
+		$ jaws project create
+
+* Create a new aws-module.  Enter a module name and the name of the first Lambda function your aws-module will use.  For example, your module name could be `awsm-images` and the first Lambda function your module offers is the ability to re-size images, enter the following:
+
+		$ jaws module create awsm-images resize
+
+* Scaffolding should now be available in your project’s `aws_modules` folder.
+
+## Creating Re-Usable AWS-Modules
+
+If you want to use your aws-module across multiple projects and optionally share it with the aws-module community, do the following:
+
+* aws-modules rely on different package managers for delivery/installation.  Choose the package manager that corresponds with the runtime of the Lambda functions within your module and create a corresponding package.  Currently, only the nodejs runtime is supported by aws-modules.  Therefore, run `npm init` within the root of your aws-module to make your aws-module an npm-module and edit the `package.json` with your authorship information in your module’s root.
+
+* Publish your aws-module to the respective package manager’s registry.  For npm-modules, run `npm publish`.
+
+* Fill in your authorship details in your aws-module’s root awsm.json file.  Sorry for the redundancy, but we will be unveiling a separate awsm registry which will assist in search and discovery of aws-modules across all programming languages/AWS Lambda runtimes.
+
+#### AWSM + NPM-Modules
+
+##### Architecture
+
+awsm npm modules should have the following structure.  Upon `npm install yourmodule`, JAWS will copy contents of the `awsm` folder into the serverless project's `aws_modules` folder on the npm *postinstall* hook.
+
+```
+module
+	awsm.json
+	package.json
+	awsm
+		lambda1
+			awsm.json
+			handler.js
+			index.js
+			event.json
+	lib
+		modularcode.js
+```
+
+###### `/awsm.json`
+This contains module and authorship information for publishing your awsm on the upcoming aws-module registry.
+###### `/package.json.json`
+This contains module and authorship information for publishing your awsm as an npm module on their registry.  Remember, awsm's use different package managers for delivery.
+###### `/awsm/`
+This contains starter scaffolding for lambda functions and endpoints.  When someone installs your awsm via npm, the contents of this folder will be copied to their *aws_modules* folder, while the rest of your awsm will reside in their project's *node_modules* folder.  As a best practice, don't put a lot of code in the scaffolding.  Instead, focus on making your code modular and re-usable by putting the bulk of it in `lib/yourcode.js`.
+###### `/awsm/lambda1`
+Your awsm can have one or multiple lambda functions.  Each lambda function resides in a sub-folder like this.
+###### `/awsm/lambda1/awsm.json`
+This contains configuration settings for this lambda and/or a URL endpoint that will be created via API Gateway.  Lambda and API Gateway config information is stored in AWS CloudFormation syntax.
+###### `/awsm/lambda1/hander.js`
+This contains the handler which AWS Lambda will call.  As a best practice, don't put your logic in here.  Keep it separate so that it is re-usable, testable, and AWS independent.
+###### `/awsm/lambda1/index.js`
+This is your lambda's code, kept separate to be re-usable across modules, testable, and AWS independent.  Please note that all of the dependencies in your awsm's package.json can only be required in code that is in `/lib/`.  Do not require those dependencies in this `index.js` file or the `handler.js` file.
+###### `/awsm/lambda1/event.json`
+This is sample event information which you can use to test your Lambda function locally.
+###### `/lib/`
+When your awsm npm module is installed via JAWS, everything in the *awsm* folder will be copied to the project's *aws_modules* folder, but everything in this *lib* folder will be kept within the project's *node_modules* folder. Generally, code that should not be modified and code that needs to be required across all aws_modules in a serverless project should be put in this folder.  Code that will be modified should be put in the `awsm` folder.
+###### `/lib/modularcode.js`
+This is code that should not be modified (like a normal npm module) and can be shared/required across all aws_modules in a serverless project.  Please note that all dependencies that are in your awsm's package.json can only be required in code that is located in the `lib` folder.
+
+##### Workflow
+
+While you develop your module locally, it's useful to have a project to implement and test it in.  With the following steps, you can install the module in your project, after which it can be tested.
+
+* Switch to the project in which you want to install your NPM module.
+
+* Run `npm link <module-name>` to create a link in your project's `/node_modules` directory to the globally-installed link.
+
+* Run `jaws postinstall <module-name> npm` to execute the `postinstall` command (since `npm link` skips the `postinstall` script).
+
+Now your module is installed!
+
+Please note that the module is not yet published to the NPM registry and therefore not yet added to your project's package.json.  Read more about this in the NPM documentation on [publishing NPM packages](https://docs.npmjs.com/getting-started/publishing-npm-packages).
+
 ## Ideas & Themes
 
 So many things can be aws-modules.  Here are some most-demanded themes for inspiration:
@@ -152,3 +187,4 @@ So many things can be aws-modules.  Here are some most-demanded themes for inspi
 ## Registry
 
 Want to tell the world about your aws module? Send a pull request against [registry.json](./registry.json). This poor mans registry is just a temporary solution.
+
