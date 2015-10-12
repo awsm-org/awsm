@@ -3,16 +3,8 @@
 AWSM: Amazon Web Services Modules
 =================================
 
-**Amazon Web Services Modules (aws-modules, awsm’s)** contain pre-written, isolated functions ready to run on one or multiple AWS Lambda functions. Some examples are: *functions that send out emails, register users or handle webhooks from other services*.
-
-The purpose of the *aws-module* format is to create an ecosystem of re-usable, standardized, optimized Lambda functions ready for deployment and easy installation into serverless projects.
-
-*aws-modules* were designed to work with [JAWS: The Serverless AWS Framework](https://github.com/jaws-framework/JAWS).
-The JAWS command line tool comes with commands to create and install *aws-modules* into your serverless projects.  View the (JAWS documentation)[https://github.com/jaws-framework/JAWS/tree/master/docs] for more information.
-
-*aws-modules* will soon support all of the languages AWS Lambda supports.  Currently, only javascript (node.js) is supported.  Building a module system that supports multiple programming languages is challenging, but since the functions of serverless projects/applications are completely isolated, functions written in different programming languages can be combined within the same project.  Given some languages are more efficient for specific tasks, this is a nice benefit.
-
 ##### Table Of Contents:
+* **[Intro](https://github.com/awsm-org/awsm#intro)**
 * **[awsm.json](https://github.com/awsm-org/awsm#awsmjson)**
 	* **[awsm.json At Module Root](https://github.com/awsm-org/awsm#awsmjson-at-module-root)**
 	* **[awsm.json At Lambda Root](https://github.com/awsm-org/awsm#awsmjson-at-lambda-root)**
@@ -24,6 +16,17 @@ The JAWS command line tool comes with commands to create and install *aws-module
 		* **[Workflow](https://github.com/awsm-org/awsm#workflow)**
 * **[Ideas & Themes](https://github.com/awsm-org/awsm#ideas--themes)**
 * **[Registry](https://github.com/awsm-org/awsm#registry)**
+
+## Intro
+
+**Amazon Web Services Modules (aws-modules, awsm’s)** contain pre-written, isolated functions ready to run on one or multiple AWS Lambda functions. Some examples are: *functions that send out emails, register users or handle webhooks from other services*.
+
+The purpose of the *aws-module* format is to create an ecosystem of re-usable, standardized, optimized Lambda functions ready for deployment and easy installation into serverless projects.
+
+*aws-modules* were designed to work with [JAWS: The Serverless AWS Framework](https://github.com/jaws-framework/JAWS).
+The JAWS command line tool comes with commands to create and install *aws-modules* into your serverless projects.  View the (JAWS documentation)[https://github.com/jaws-framework/JAWS/tree/master/docs] for more information.
+
+*aws-modules* will soon support all of the languages AWS Lambda supports.  Currently, only javascript (node.js) is supported.  Building a module system that supports multiple programming languages is challenging, but since the functions of serverless projects/applications are completely isolated, functions written in different programming languages can be combined within the same project.  Given some languages are more efficient for specific tasks, this is a nice benefit.
 
 ## awsm.json
 
