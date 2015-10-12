@@ -13,17 +13,17 @@ The JAWS command line tool comes with commands to create and install *aws-module
 *aws-modules* will soon support all of the languages AWS Lambda supports.  Currently, only javascript (node.js) is supported.  Building a module system that supports multiple programming languages is challenging, but since the functions of serverless projects/applications are completely isolated, functions written in different programming languages can be combined within the same project.  Given some languages are more efficient for specific tasks, this is a nice benefit.
 
 ##### Table Of Contents:
-* awsm.json
-	* awsm.json At Module Root
-	* awsm.json At Lambda Root
-	* Lambda Configuration Options
-* Creating AWS-Modules
-* Creating Reusable AWS-Modules
-	* AWSM + NPM-Modules
-		* Architecture
-		* Workflow
-* Ideas & Themes
-* Registry
+* [awsm.json](https://github.com/awsm-org/awsm#awsmjson)
+	* [awsm.json At Module Root](https://github.com/awsm-org/awsm#awsmjson-at-module-root)
+	* [awsm.json At Lambda Root](https://github.com/awsm-org/awsm#awsmjson-at-lambda-root)
+	* [Lambda Configuration Options](https://github.com/awsm-org/awsm#lambda-configuration-options)
+* [Creating AWS-Modules](https://github.com/awsm-org/awsm#creating-aws-modules)
+* [Creating Reusable AWS-Modules](https://github.com/awsm-org/awsm#creating-re-usable-aws-modules)
+	* [AWSM + NPM-Modules](https://github.com/awsm-org/awsm#awsm--npm-modules)
+		* [Architecture](https://github.com/awsm-org/awsm#architecture)
+		* [Workflow](https://github.com/awsm-org/awsm#workflow)
+* [Ideas & Themes](https://github.com/awsm-org/awsm#ideas--themes)
+* [Registry](https://github.com/awsm-org/awsm#registry)
 
 ## awsm.json
 
