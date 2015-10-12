@@ -8,13 +8,28 @@ AWSM: Amazon Web Services Modules
 The purpose of the *aws-module* format is to create an ecosystem of re-usable, standardized, optimized Lambda functions ready for deployment and easy installation into serverless projects.
 
 *aws-modules* were designed to work with [JAWS: The Serverless AWS Framework](https://github.com/jaws-framework/JAWS).
-The JAWS command line tool comes with commands to create and install *aws-modules* into your serverless projects.  View the (JAWS documentation)[] for more information.
+The JAWS command line tool comes with commands to create and install *aws-modules* into your serverless projects.  View the (JAWS documentation)[https://github.com/jaws-framework/JAWS/tree/master/docs] for more information.
 
 *aws-modules* will soon support all of the languages AWS Lambda supports.  Currently, only javascript (node.js) is supported.  Building a module system that supports multiple programming languages is challenging, but since the functions of serverless projects/applications are completely isolated, functions written in different programming languages can be combined within the same project.  Given some languages are more efficient for specific tasks, this is a nice benefit.
+
+##### Table Of Contents:
+* awsm.json
+	* awsm.json At Module Root
+	* awsm.json At Lambda Root
+	* Lambda Configuration Options
+* Creating AWS-Modules
+* Creating Reusable AWS-Modules
+	* AWSM + NPM-Modules
+		* Architecture
+		* Workflow
+* Ideas & Themes
+* Registry
 
 ## awsm.json
 
 The defining feature of an *aws-module* is an `awsm.json` file located at the root of the module.  *aws-modules'* configuration settings, dependencies and authorship details are described in this `awsm.json` file.  Below, are limited `awsm.json` examples.  To view all available properties, see the [awsm.json file in this repo](./awsm.json).
+
+#### awsm.json At Module Root
 
 Any required AWS resources (e.g., DynamoDB, S3) **outside** of the Lambda and API Gateway resources your module requires in the "resources" object:
 
@@ -33,6 +48,8 @@ Any required AWS resources (e.g., DynamoDB, S3) **outside** of the Lambda and AP
 ```
 
 Please note that JAWS defines some standard [ AWS CloudFormation parameters](https://github.com/jaws-framework/JAWS/blob/master/docs/project_structure.md#resources-cfjson) that can be used as `"Ref"`s
+
+#### awsm.json At Lambda Root
 
 Within each resource/lambda directory is another **awsm.json** which describes either an AWS Lambda configuration,
 an API Gateway configuration, or both.  `awsm.json` files within resource/action directories need only a "lambda" or
@@ -56,7 +73,7 @@ an API Gateway configuration, or both.  `awsm.json` files within resource/action
 ```
 
 
-##### Lambda configuration options
+#### Lambda Configuration Options
 
 **Note**: All of the attrs below assume the `lambda` attribute key prefix.
 
@@ -76,10 +93,6 @@ an API Gateway configuration, or both.  `awsm.json` files within resource/action
 For an optimize example using the most popular node modules see [browserify tests](../tests/test-prj/back/aws_modules/bundle/browserify)
 
 For non optimize example see [non optimized tests](../tests/test-prj/back/aws_modules/bundle/nonoptimized)
-
-##### API Gateway attributes:
-
-TODO
 
 
 
