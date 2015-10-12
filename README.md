@@ -183,7 +183,7 @@ Please note that the module is not yet published to the NPM registry and therefo
 
 ## Ideas & Themes
 
-So many things can be aws-modules.  Here are some most-demanded themes for inspiration:
+So many things can be aws-modules.  Here are a few popular themes for inspiration:
 
 * **Users/Sessions CRUD** - Bonus if you include sign on via popular 3rd party services (e.g., Github)
 * **Analytics/Event Functions** - Captures common user events
