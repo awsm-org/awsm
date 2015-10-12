@@ -5,21 +5,18 @@ AWSM: Amazon Web Services Modules
 
 **Amazon Web Services Modules (aws-modules, awsm’s)** contain pre-written, isolated functions ready to run on one or multiple AWS Lambda functions. Some examples are: *functions that send out emails, register users or handle webhooks from other services*.
 
-The purpose of the aws-modules format is to create an ecosystem of re-usable, standardized, optimized Lambda functions ready for deployment and easy installation into serverless projects.
+The purpose of the *aws-module* format is to create an ecosystem of re-usable, standardized, optimized Lambda functions ready for deployment and easy installation into serverless projects.
 
-aws-modules were designed to work with [JAWS: The Serverless AWS Framework](https://github.com/jaws-framework/JAWS).
-The JAWS command line tool comes with commands to create and install aws-modules into your serverless projects.  View the (JAWS documentation)[] for more information.
+*aws-modules* were designed to work with [JAWS: The Serverless AWS Framework](https://github.com/jaws-framework/JAWS).
+The JAWS command line tool comes with commands to create and install *aws-modules* into your serverless projects.  View the (JAWS documentation)[] for more information.
 
-aws-modules will soon support all of the languages AWS Lambda supports.  Currently, only javascript (node.js) is supported.  Building a module system that supports multiple programming languages is challenging, but since the functions of serverless projects/applications are completely isolated, functions written in different programming languages can be combined within the same project.  Given some languages are more efficient for specific tasks, this is a nice benefit.
+*aws-modules* will soon support all of the languages AWS Lambda supports.  Currently, only javascript (node.js) is supported.  Building a module system that supports multiple programming languages is challenging, but since the functions of serverless projects/applications are completely isolated, functions written in different programming languages can be combined within the same project.  Given some languages are more efficient for specific tasks, this is a nice benefit.
 
 ## awsm.json
 
-aws-modules' configuration settings and dependencies are described in **awsm.json** files located in the module.
+The defining feature of an *aws-module* is an `awsm.json` file located at the root of the module.  *aws-modules'* configuration settings, dependencies and authorship details are described in this `awsm.json` file.  Below, are limited `awsm.json` examples.  To view all available properties, see the [awsm.json file in this repo](./awsm.json).
 
-**Below are limited awsm.json examples.  To view all available properties see the [awsm.json file in this repo](./awsm.json).**
-
-At your module's root, you should have an **awsm.json** file which describes publishing information as well as any required
-AWS resources (e.g., DynamoDB, S3) outside of the Lambda and API Gateway resources your module requires in the "resources" object:
+Any required AWS resources (e.g., DynamoDB, S3) **outside** of the Lambda and API Gateway resources your module requires in the "resources" object:
 
 ```
 "name": "usersCreate",
@@ -34,11 +31,12 @@ AWS resources (e.g., DynamoDB, S3) outside of the Lambda and API Gateway resourc
 	}
 }
 ```
-**Note** that JAWS defines some standard [ AWS CloudFormation parameters](https://github.com/jaws-framework/JAWS/blob/master/docs/project_structure.md#resources-cfjson) that can be used as `"Ref"`s
 
-Within each resource/action directory is another **awsm.json** which describes either an AWS Lambda configuration,
-an API Gateway configuration, or both.  awsm.json files within resource/action directories only need a "lambda" or
-"apiGateway" property, or both.
+Please note that JAWS defines some standard [ AWS CloudFormation parameters](https://github.com/jaws-framework/JAWS/blob/master/docs/project_structure.md#resources-cfjson) that can be used as `"Ref"`s
+
+Within each resource/lambda directory is another **awsm.json** which describes either an AWS Lambda configuration,
+an API Gateway configuration, or both.  `awsm.json` files within resource/action directories need only a "lambda" or
+"apiGateway" property (or both).
 
 ```
 "lambda": {
