@@ -148,7 +148,7 @@ module
 
 ###### `/awsm.json`
 This contains module and authorship information for publishing your awsm on the upcoming aws-module registry.
-###### `/package.json.json`
+###### `/package.json`
 This contains module and authorship information for publishing your awsm as an npm module on their registry.  Remember, awsm's use different package managers for delivery.
 ###### `/awsm/`
 This contains starter scaffolding for lambda functions and endpoints.  When someone installs your awsm via npm, the contents of this folder will be copied to their *aws_modules* folder, while the rest of your awsm will reside in their project's *node_modules* folder.  As a best practice, don't put a lot of code in the scaffolding.  Instead, focus on making your code modular and re-usable by putting the bulk of it in `lib/yourcode.js`.
