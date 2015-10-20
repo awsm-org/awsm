@@ -15,12 +15,12 @@
           "aws-sdk"
         ],
         "includePaths": []
-      }
+      },
+      "excludePatterns": [
+        "lambdas/[u].*",
+        "lambdas/bundle/b.*"
+      ]
     },
-    "excludePatterns": [
-      "lambdas/[u].*",
-      "lambdas/bundle/b.*"
-    ],
     "cloudFormation": {
       "Description": "lambda function description",
       "Handler": "aws_modules/resource/action/handler.handler",
