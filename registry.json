@@ -48,5 +48,10 @@
     "name":"awsm-s3tokenvendor",
     "url":"https://github.com/binoculars/awsm-s3tokenvendor",
     "description":"AWS Module to generate S3 upload tokens"
+  },
+  {
+    "name":"awsm-npm-registry",
+    "url": "https://github.com/inbot/awsm-npm-registry",
+    "description": "Simple serverless NPM registry"
   }
 ]
