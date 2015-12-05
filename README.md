@@ -156,7 +156,7 @@ This contains starter scaffolding for lambda functions and endpoints.  When some
 Your awsm can have one or multiple lambda functions.  Each lambda function resides in a sub-folder like this.
 ###### `/awsm/lambda1/awsm.json`
 This contains configuration settings for this lambda and/or a URL endpoint that will be created via API Gateway.  Lambda and API Gateway config information is stored in AWS CloudFormation syntax.
-###### `/awsm/lambda1/hander.js`
+###### `/awsm/lambda1/handler.js`
 This contains the handler which AWS Lambda will call.  As a best practice, don't put your logic in here.  Keep it separate so that it is re-usable, testable, and AWS independent.
 ###### `/awsm/lambda1/index.js`
 This is your lambda's code, kept separate to be re-usable across modules, testable, and AWS independent.  Please note that all of the dependencies in your awsm's package.json can only be required in code that is in `/lib/`.  Do not require those dependencies in this `index.js` file or the `handler.js` file.
